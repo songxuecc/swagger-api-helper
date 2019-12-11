@@ -47,7 +47,7 @@ export interface Options {
 export interface TagAlias {
     [key: string]: string;
 }
-
+ 
 export interface InterfaceNames {
     query: string;
     body: string;
