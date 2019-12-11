@@ -1,3 +1,12 @@
-export const request = <T>(...args: any[]) => {};
-export const stringify = (...args: any[]) => {};
+export const request = <T>(url,options) => {
+     
+};
+export const stringify = (...args: any[]) => {
+
+};
 export interface ExtraFetchOptions {}
+
+
+
+
+ 

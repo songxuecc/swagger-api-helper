@@ -42,14 +42,9 @@ const generate = (options: Options) => {
                             const aliasSplitArrays = key.trim().split('/')[0].trim();
                             const replacedAlias = tagAlias[aliasSplitArrays]
                             alias = replacedAlias ?  key.trim().replace(aliasSplitArrays,replacedAlias) : undefined
-                            console.log(alias,key.trim(),'hasPrefix')
-
                         }else{
                             alias = tagAlias[key.trim()]
                         }
-
-                        // const alias = key.trim().indexOf('/') > -1?tagAlias[key.trim().split('/')[0]]+'/'+key.trim().split('/')[1]: tagAlias[key.trim()];
-
                         const filename = join(
                             outputPath,
                             `${dirname}/${alias ? alias : key.trim()}.ts`
