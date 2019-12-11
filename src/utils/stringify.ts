@@ -1,8 +1,8 @@
 /*
- * @Author: yehq
+ * @Author: midou
  * @Date: 2019-12-11 11:22:08
- * @Last Modified by: yehq
- * @Last Modified time: 2019-12-11 11:28:11
+ * @Last Modified by: 祢豆
+ * @Last Modified time: 2019-12-11 21:50:12
  * 转换对象形式的 query 到 url 上的形式
  */
 
