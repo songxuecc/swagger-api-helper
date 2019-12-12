@@ -10,8 +10,8 @@ const tagAlias = {
 };
 
 const urls = [[ "https://sx.api.mengtuiapp.com/swagger/swagger.json",""]];
-const outputPath = path.join(__dirname, "./services");
-const outputPathCopy = path.join(__dirname, "./servicesCopy");
+const outputPath = path.join(__dirname, "../services");
+const outputPathCopy = path.join(__dirname, "../servicesCopy");
 
 module.exports = {
     tagAlias,
