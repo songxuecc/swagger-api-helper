@@ -1,6 +1,6 @@
 import request from '@/utils/request';
 import { ExtraFetchOptions } from '@/types';
-import { Order } from './interfaces'
+import { Order } from './interfaces';
 
 
 export interface GetStoreInventoryPayload extends ExtraFetchOptions {
