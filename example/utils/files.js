@@ -2,7 +2,7 @@ var fs = require("fs");
 var path = require("path");
 const { join } = require('path');
 
-class FileDisplay {
+class FindFile {
     constructor() {
         this.counnt = 0;
         this.res = undefined;
@@ -68,4 +68,8 @@ function removeFolder(path) {
     }
 }
 
-module.exports = { FileDisplay, removeFolder };
+
+module.export  = {
+    FindFile,
+    removeFolder
+}

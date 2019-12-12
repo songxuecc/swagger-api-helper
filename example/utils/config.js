@@ -9,16 +9,13 @@ const tagAlias = {
     "店铺 Author:陆离": "Mall",
 };
 
-const urls = [ [ "https://sx.api.mengtuiapp.com/swagger/swagger.json", "" ] ];
-
-
+const urls = [[ "https://sx.api.mengtuiapp.com/swagger/swagger.json",""]];
 const outputPath = path.join(__dirname, "./services");
 const outputPathCopy = path.join(__dirname, "./servicesCopy");
-
 
 module.exports = {
     tagAlias,
     urls,
     outputPath,
-    outputPathCopy
+    outputPathCopy,
 };
