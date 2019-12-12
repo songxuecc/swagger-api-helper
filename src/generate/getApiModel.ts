@@ -57,10 +57,7 @@ export default (
      * 只需要引入 全局接口类型 和自定义导入
      */
     if (renderFunction) {
-        imports = [globalInterfaceNamesImport];
-    }
-    if (extraImport) {
-        imports.unshift(extraImport);
+        imports = [importRequest(filename),globalInterfaceNamesImport];
     }
     return content.trim() ? `${imports.join('\n')}\n\n${content}` : '';
 

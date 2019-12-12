@@ -8,6 +8,7 @@ const { removeFolder, FileDisplay } = require("./utils/findFilePath");
 const log = console.log;
 // 生成全部模块
 const genApi = async outputPath => {
+    console.log(outputPath, "outputPath");
     const message = await swaggerGenerate({
         // swagger json url 地址
         urls,
@@ -21,15 +22,17 @@ const genApi = async outputPath => {
                 Authorization: "Basic YWRtaW46dENmcWU4JEph",
             },
         },
-        // 返回 导入 request 的字符串, request 用来发请求的方法
+        hasExtraFetchOptions: false,
+        renderFunction: options => {
+            return `
+            export async function ${options.name}(payload: ${options.payloadType}) {\n\treturn fetch<${options.responseType}>(\`${options.method.toLocaleUpperCase()}\` , \`${options.url.replace(
+                "$",
+                ""
+            )}\` , payload)\r}`;
+        },
         importRequest: filename => {
             const relativePath = path.join(path.relative(filename, outputPath), "utils");
-            return `import { request } from '${relativePath}';`;
-        },
-        // 返回 导入 request 的字符串, request 用来发请求的方法
-        importStringify: filename => {
-            const relativePath = path.join(path.relative(filename, outputPath), "utils");
-            return `import { stringify } from '${relativePath}';`;
+            return `import { fetch } from '${relativePath}';`;
         },
     });
 };
@@ -49,13 +52,13 @@ const gen = async () => {
             const fileDisplay = new FileDisplay();
             const copyFilePath = await fileDisplay.find(outputPathCopy, targetDirname);
             const deleteFilePath = await fileDisplay.find(outputPath, targetDirname);
-            fs.unlinkSync(deleteFilePath)
-            const copy = fs.createReadStream(copyFilePath).pipe(
-                fs.createWriteStream(deleteFilePath)
-            )
-            copy.on('finish',()=>{
-                removeFolder(outputPathCopy)
-            })
+            fs.unlinkSync(deleteFilePath);
+            const copy = fs
+                .createReadStream(copyFilePath)
+                .pipe(fs.createWriteStream(deleteFilePath));
+            copy.on("finish", () => {
+                removeFolder(outputPathCopy);
+            });
         } else {
             genApi(outputPath);
         }
